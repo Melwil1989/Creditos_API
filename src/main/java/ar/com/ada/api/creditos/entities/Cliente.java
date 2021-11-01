@@ -1,23 +1,26 @@
 package ar.com.ada.api.creditos.entities;
 
+import java.util.*;
+
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import org.hibernate.annotations.NaturalId;
 
-import ar.com.ada.api.creditos.excepciones.*;
-
-import java.util.*;
+import ar.com.ada.api.creditos.excepciones.ClienteDNIException;
 
 @Entity
 @Table(name = "cliente")
 public class Cliente {
+
     @Id
     @Column(name = "cliente_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int clienteId;
+
     private String nombre;
+
     @NaturalId
     private int dni;
 
@@ -36,10 +39,10 @@ public class Cliente {
 
     public Cliente(String nombre) {
         this.nombre = nombre;
-
     }
 
     public Cliente() {
+        
     }
 
     public int getClienteId() {

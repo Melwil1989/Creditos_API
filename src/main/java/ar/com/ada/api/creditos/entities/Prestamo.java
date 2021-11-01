@@ -1,7 +1,7 @@
 package ar.com.ada.api.creditos.entities;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.util.*;
 
 import javax.persistence.*;
 
@@ -30,6 +30,9 @@ public class Prestamo {
     @ManyToOne //join columns van donde esta FK
     @JoinColumn(name = "cliente_id", referencedColumnName = "cliente_id")
     private Cliente cliente;
+
+    @OneToMany(mappedBy = "prestamo", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Cancelacion> cancelaciones = new ArrayList<>();
 
     public int getPrestamoId() {
         return prestamoId;
@@ -88,6 +91,18 @@ public class Prestamo {
 
     public void setEstadoId(EstadoPrestamoEnum estadoId) {
         this.estadoId = estadoId.getValue();
+    }
+
+    public List<Cancelacion> getCancelaciones() {
+        return cancelaciones;
+    }
+
+    public void setCancelaciones(List<Cancelacion> cancelaciones) {
+        this.cancelaciones = cancelaciones;
+    }
+
+    public void agregarCancelacion(Cancelacion cancelacion) {
+        this.cancelaciones.add(cancelacion);
     }
 
     //enumerado

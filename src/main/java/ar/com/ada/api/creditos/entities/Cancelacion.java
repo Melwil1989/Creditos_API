@@ -14,14 +14,20 @@ public class Cancelacion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @ManyToOne
+    @JoinColumn(name = "prestamo_id", referencedColumnName = "prestamo_id")
+    private Prestamo prestamo;
+
     @Column(name = "fecha_cancelacion")
     private Date fechaCancelacion;
 
-    @Column
     private BigDecimal importe;
 
-    @Column
     private int cuota;
+
+    public Cancelacion() {
+
+    }
 
     public Integer getId() {
         return id;
@@ -29,6 +35,15 @@ public class Cancelacion {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Prestamo getPrestamo() {
+        return prestamo;
+    }
+
+    public void setPrestamo(Prestamo prestamo) {
+        this.prestamo = prestamo;
+        this.prestamo.agregarCancelacion(this);
     }
 
     public Date getFechaCancelacion() {
