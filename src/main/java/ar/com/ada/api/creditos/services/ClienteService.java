@@ -17,11 +17,22 @@ public class ClienteService {
     ClienteRepository repository;
 
     public List<Cliente> traerTodos() {
+
         return repository.findAll();       
     }
 
     public void crearCliente(Cliente cliente) {
+
         repository.save(cliente);
     }
-    
+
+    public Cliente traerClientePorId(Integer id) {
+
+        return repository.findByClienteId(id);
+    } 
+
+    public void actualizarCliente(Cliente cliente) {
+
+        repository.save(cliente);
+    }
 }
