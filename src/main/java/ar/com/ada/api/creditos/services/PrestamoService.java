@@ -1,5 +1,8 @@
 package ar.com.ada.api.creditos.services;
 
+import java.math.BigDecimal;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +15,16 @@ public class PrestamoService {
     @Autowired
     PrestamoRepository repo;
 
-    public void crearPrestamo(Prestamo prestamo) {
+    public Prestamo crearPrestamo(Integer clienteId, Date fecha, BigDecimal importe, int cuotas) {
 
-        repo.save(prestamo);
+        Prestamo prestamo = new Prestamo();
+
+        prestamo.getCliente().setClienteId(clienteId);
+        prestamo.setFecha(fecha);
+        prestamo.setImporte(importe);
+        prestamo.setCuotas(cuotas);
+
+        return repo.save(prestamo);
     }
     
 }
