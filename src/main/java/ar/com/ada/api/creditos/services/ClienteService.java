@@ -31,8 +31,4 @@ public class ClienteService {
         return repository.findByClienteId(id);
     } 
 
-    public void actualizarCliente(Cliente cliente) {
-
-        repository.save(cliente);
-    }
 }
