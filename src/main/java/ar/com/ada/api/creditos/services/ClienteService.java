@@ -21,9 +21,19 @@ public class ClienteService {
         return repository.findAll();       
     }
 
-    public void crearCliente(Cliente cliente) {
+    /*public void crearCliente(Cliente cliente) {
 
         repository.save(cliente);
+    }*/
+
+    public boolean crearCliente(Cliente cliente) {
+        
+        if(existe(cliente.getNombre(), cliente.getDni()))
+            return false;
+
+        repository.save(cliente);
+
+        return true;
     }
 
     public Cliente traerClientePorId(Integer id) {
@@ -31,4 +41,23 @@ public class ClienteService {
         return repository.findByClienteId(id);
     } 
 
+    public boolean existePorId(Integer id) {
+
+        Cliente cliente = repository.findByClienteId(id);
+        return cliente != null;
+    }
+
+    public boolean existe(String nombre, int dni) {
+
+        if(repository.existsByNombre(nombre) && repository.existsByDni(dni)) {
+
+            return true; 
+        }
+        return false;
+    }
+
+    public void actualizarCliente(Cliente cliente) {
+
+        repository.save(cliente);
+    }
 }

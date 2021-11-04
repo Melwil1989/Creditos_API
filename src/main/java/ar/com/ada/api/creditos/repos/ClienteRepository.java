@@ -9,4 +9,6 @@ import ar.com.ada.api.creditos.entities.Cliente;
 public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
 
     Cliente findByClienteId(Integer id);
+    boolean existsByNombre(String nombre);
+    boolean existsByDni(int dni);
 }

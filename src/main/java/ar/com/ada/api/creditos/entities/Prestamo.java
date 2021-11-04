@@ -9,6 +9,10 @@ import javax.persistence.*;
 @Table(name = "prestamo")
 public class Prestamo {
 
+    public Prestamo() {
+
+    }
+
     @Id //que es una PK.
     @Column(name = "prestamo_id") //Nombre con el que se mapea a la base de datos.
     @GeneratedValue(strategy = GenerationType.IDENTITY) //Autoincremental

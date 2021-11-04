@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import ar.com.ada.api.creditos.entities.Prestamo;
-import ar.com.ada.api.creditos.models.request.InfoNuevoPrestamo;
 import ar.com.ada.api.creditos.models.response.GenericResponse;
 import ar.com.ada.api.creditos.services.PrestamoService;
 
@@ -16,13 +15,11 @@ public class PrestamoController {
     PrestamoService service;
 
     @PostMapping("/prestamos")
-    public ResponseEntity<?> crearPrestamo(@RequestBody InfoNuevoPrestamo infoPrestamo) {
-
-        service.crearPrestamo(infoPrestamo.clienteId, infoPrestamo.fecha, infoPrestamo.importe, infoPrestamo.cuotas);
+    public ResponseEntity<?> crearPrestamo(@RequestBody Prestamo prestamo) {
 
         GenericResponse respuesta = new GenericResponse();
 
-        Prestamo prestamo = new Prestamo();
+        service.crearPrestamo(prestamo);
 
         respuesta.isOk = true;
         respuesta.id = prestamo.getPrestamoId();

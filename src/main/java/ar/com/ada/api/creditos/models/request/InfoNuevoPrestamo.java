@@ -9,4 +9,5 @@ public class InfoNuevoPrestamo {
     public Date fecha;
     public BigDecimal importe;
     public int cuotas;
+    public Date fechaAlta;
 }
