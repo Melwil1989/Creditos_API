@@ -9,10 +9,14 @@ import javax.persistence.*;
 @Table(name = "cancelacion")
 public class Cancelacion {
 
+    public Cancelacion() {
+
+    }
+
     @Id
     @Column(name = "cancelacion_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
 
     @ManyToOne
     @JoinColumn(name = "prestamo_id", referencedColumnName = "prestamo_id")
@@ -24,16 +28,12 @@ public class Cancelacion {
     private BigDecimal importe;
 
     private int cuota;
-
-    public Cancelacion() {
-
-    }
-
-    public Integer getId() {
+ 
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
