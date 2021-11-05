@@ -5,6 +5,8 @@ import java.util.*;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "prestamo")
 public class Prestamo {
@@ -35,6 +37,7 @@ public class Prestamo {
     @JoinColumn(name = "cliente_id", referencedColumnName = "cliente_id")
     private Cliente cliente;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "prestamo", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Cancelacion> cancelaciones = new ArrayList<>();
 

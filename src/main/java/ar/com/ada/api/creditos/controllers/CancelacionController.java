@@ -1,10 +1,10 @@
 package ar.com.ada.api.creditos.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import ar.com.ada.api.creditos.entities.Cancelacion;
 import ar.com.ada.api.creditos.entities.Prestamo;
@@ -40,6 +40,12 @@ public class CancelacionController {
         respuesta.message = "La cancelacion ha sido creada con exito";
 
         return ResponseEntity.ok(respuesta);
+    }
+
+    @GetMapping("/cancelaciones/prestamos/{idPrestamo}")
+    public ResponseEntity<List<Cancelacion>> traerCancelacionesPorPrestamoId(@PathVariable int idPrestamo) {
+        
+        return ResponseEntity.ok(service.traerCancelacionesPorPrestamoId(idPrestamo));
     }
     
 }
