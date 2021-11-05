@@ -33,6 +33,7 @@ public class Prestamo {
     @Column(name = "estado_id")
     private int estadoId; // Por ahora vamos a crear este como int
 
+    @JsonIgnore
     @ManyToOne //join columns van donde esta FK
     @JoinColumn(name = "cliente_id", referencedColumnName = "cliente_id")
     private Cliente cliente;
