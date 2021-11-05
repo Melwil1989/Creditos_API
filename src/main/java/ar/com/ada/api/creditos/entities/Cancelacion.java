@@ -13,6 +13,13 @@ public class Cancelacion {
 
     }
 
+    public Cancelacion(BigDecimal importe, int cuota, Date fechaCancelacion) {
+
+        this.importe = importe;
+        this.cuota = cuota;
+        this.fechaCancelacion = fechaCancelacion;    
+    }
+
     @Id
     @Column(name = "cancelacion_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
